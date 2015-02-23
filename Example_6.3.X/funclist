@@ -1,0 +1,14 @@
+_OpenUSART: CODE, 146 0 90
+_Timer0_isr: CODE, 8 0 138
+_Write_str: CODE, 314 0 54
+_Config_Interrupt_TMR0: CODE, 580 0 10
+_main: CODE, 236 0 78
+_Write: CODE, 566 0 14
+_function: CODE, 472 0 28
+_WriteTimer0: CODE, 500 0 18
+__initialization: CODE, 368 0 34
+_WriteUSART: CODE, 536 0 16
+_OpenTimer0: CODE, 444 0 28
+i2_WriteTimer0: CODE, 518 0 18
+_UsartConfig: CODE, 552 0 14
+Total: 540

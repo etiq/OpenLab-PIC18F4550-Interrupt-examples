@@ -1,0 +1,15 @@
+_OpenUSART: CODE, 144 0 100
+_Write_str: CODE, 362 0 46
+_Delay1KTCYx: CODE, 534 0 16
+_main: CODE, 304 0 58
+_Write: CODE, 580 0 14
+_function: CODE, 244 0 60
+_Config_interruptPORTB: CODE, 594 0 10
+__initialization: CODE, 408 0 34
+i2_Delay1KTCYx: CODE, 550 0 16
+_PORTB_isr: CODE, 8 0 136
+_WriteUSART: CODE, 516 0 18
+_delay_ms: CODE, 448 0 24
+_UsartConfig: CODE, 566 0 14
+i2_delay_ms: CODE, 472 0 24
+Total: 570

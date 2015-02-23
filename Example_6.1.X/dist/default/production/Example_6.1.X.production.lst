@@ -1,0 +1,1197 @@
+
+
+Microchip Technology PIC18 LITE Macro Assembler V1.21 build 54009 
+                                                                                               Sat Jul 19 15:05:58 2014
+
+Microchip Technology Omniscient Code Generator (Lite mode) build 54009
+     1                           	processor	18F4550
+     2                           	fnconf	rparam,??,?,0
+     3                           	opt	pw 120
+     4                           	opt	lm
+     5                           	psect	text0,global,reloc=2,class=CODE,delta=1
+     6                           	psect	cinit,global,reloc=2,class=CODE,delta=1
+     7                           	psect	cstackCOMRAM,global,class=COMRAM,space=1,delta=1
+     8                           	psect	text1,global,reloc=2,class=CODE,delta=1
+     9                           	psect	text2,global,reloc=2,class=CODE,delta=1
+    10                           	psect	text3,global,reloc=2,class=CODE,delta=1
+    11                           	psect	text4,global,reloc=2,class=CODE,delta=1
+    12                           	psect	intcode,global,reloc=2,class=CODE,delta=1
+    13                           	psect	intcode_body,global,reloc=2,class=CODE,delta=1
+    14                           	psect	text6,global,reloc=2,class=CODE,delta=1
+    15                           	psect	text7,global,reloc=2,class=CODE,delta=1
+    16                           	psect	text8,global,reloc=2,class=CODE,delta=1
+    17                           	psect	intsave_regs,global,class=BIGRAM,space=1,delta=1
+    18                           	psect	rparam,global,class=COMRAM,space=1,delta=1
+    19  0000                     _ADCON1	set	4033
+    20  0000                     _INTCONbits	set	4082
+    21  0000                     _LATDbits	set	3980
+    22  0000                     _PORTDbits	set	3971
+    23  0000                     _RCONbits	set	4048
+    24  0000                     _TRISDbits	set	3989
+    25  0000                     _UCONbits	set	3949
+    26                           
+    27 ;;
+    28 ;;Main: autosize = 0, tempsize = 1, incstack = 0, save=0
+    29 ;;
+    30 ;; *************** function _main *****************
+    31 ;; Defined at:
+    32 ;;		line 120 in file "main.c"
+    33 ;; Parameters:    Size  Location     Type
+    34 ;;		None
+    35 ;; Auto vars:     Size  Location     Type
+    36 ;;		None
+    37 ;; Return value:  Size  Location     Type
+    38 ;;                  2   27[COMRAM] int 
+    39 ;; Registers used:
+    40 ;;		wreg, fsr0l, fsr0h, fsr1l, fsr1h, fsr1l, fsr1h, fsr2l, fsr2h, status,2, status,0, pclat, btemp, btemp+1, btemp+2, bt
+      +emp+3, btemp+4, btemp+5, btemp+6, btemp+7, tosl, structret, tblptrl, tblptrh, tblptru, prodl, prodh, bsr, cstack
+    41 ;; Tracked objects:
+    42 ;;		On entry : 0/0
+    43 ;;		On exit  : 0/0
+    44 ;;		Unchanged: 0/0
+    45 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+    46 ;;      Params:         0       0       0       0       0       0       0       0       0
+    47 ;;      Locals:         0       0       0       0       0       0       0       0       0
+    48 ;;      Temps:          1       0       0       0       0       0       0       0       0
+    49 ;;      Totals:         1       0       0       0       0       0       0       0       0
+    50 ;;Total ram usage:        1 bytes
+    51 ;; Hardware stack levels required when called:    7
+    52 ;; This function calls:
+    53 ;;		_Config_Intrrupt_Ext
+    54 ;;		_Delay_ms_
+    55 ;; This function is called by:
+    56 ;;		Startup code after reset
+    57 ;; This function uses a non-reentrant model
+    58 ;;
+    59                           
+    60                           	psect	text0
+    61  0000D4                     __ptext0:
+    62                           	opt stack 0
+    63                           
+    64                           ; #config settings
+    65  0000D4                     _main:
+    66                           	opt stack 24
+    67                           
+    68                           ;main.c: 121: UCONbits.USBEN = 0;
+    69                           
+    70                           ;incstack = 0
+    71                           ;incstack = 0
+    72  0000D4  966D               	bcf	3949,3,c	;volatile
+    73                           
+    74                           ;main.c: 122: RCONbits.IPEN = 0;
+    75  0000D6  9ED0               	bcf	4048,7,c	;volatile
+    76                           
+    77                           ;main.c: 123: ADCON1 = 0x0F;
+    78  0000D8  0E0F               	movlw	15
+    79  0000DA  6EC1               	movwf	4033,c	;volatile
+    80                           
+    81                           ;main.c: 124: TRISDbits.TRISD1 = 0;
+    82  0000DC  9295               	bcf	3989,1,c	;volatile
+    83                           
+    84                           ;main.c: 125: TRISDbits.TRISD0 = 0;
+    85  0000DE  9095               	bcf	3989,0,c	;volatile
+    86                           
+    87                           ;main.c: 126: LATDbits.LATD0 = 0;
+    88  0000E0  908C               	bcf	3980,0,c	;volatile
+    89                           
+    90                           ;main.c: 127: LATDbits.LATD1 = 0;
+    91  0000E2  928C               	bcf	3980,1,c	;volatile
+    92                           
+    93                           ;main.c: 128: Config_Intrrupt_Ext();
+    94  0000E4  ECE7  F000         	call	_Config_Intrrupt_Ext	;wreg free
+    95                           
+    96                           ;main.c: 129: (INTCONbits.GIE = 1);
+    97  0000E8  8EF2               	bsf	intcon,7,c	;volatile
+    98  0000EA                     l684:
+    99                           
+   100                           ;main.c: 131: {
+   101                           ;main.c: 132: LATDbits.LATD0 = ~PORTDbits.RD0;
+   102  0000EA  5083               	movf	3971,w,c	;volatile
+   103  0000EC  0B01               	andlw	1
+   104  0000EE  0AFF               	xorlw	255
+   105  0000F0  6E21               	movwf	??_main& (0+255),c
+   106  0000F2  508C               	movf	3980,w,c	;volatile
+   107  0000F4  1821               	xorwf	??_main,w,c
+   108  0000F6  0BFE               	andlw	-2
+   109  0000F8  1821               	xorwf	??_main,w,c
+   110  0000FA  6E8C               	movwf	3980,c	;volatile
+   111                           
+   112                           ;main.c: 133: Delay_ms_(1);
+   113  0000FC  6E21               	movwf	??_main& (0+255),c
+   114  0000FE  0E01               	movlw	1
+   115  000100  6E1D               	movwf	?_Delay_ms_,c
+   116  000102  5021               	movf	??_main& (0+255),w,c
+   117  000104  EC85  F000         	call	_Delay_ms_	;wreg free
+   118  000108  D7F0               	goto	l684
+   119  00010A                     __end_of_main:
+   120                           	opt stack 0
+   121                           intcon	equ	0xFF2
+   122                           
+   123                           	psect	cinit
+   124  0001D6                     __pcinit:
+   125                           	opt stack 0
+   126  0001D6                     start_initialization:
+   127                           	opt stack 0
+   128  0001D6                     __initialization:
+   129                           	opt stack 0
+   130  0001D6                     end_of_initialization:
+   131                           	opt stack 0
+   132  0001D6                     __end_of__initialization:
+   133                           	opt stack 0
+   134  0001D6  0100               	movlb	0
+   135  0001D8  EF6A  F000         	goto	_main	;jump to C main() function
+   136                           intcon	equ	0xFF2
+   137                           
+   138                           	psect	cstackCOMRAM
+   139  000001                     __pcstackCOMRAM:
+   140                           	opt stack 0
+   141  000001                     ?i2_Delay1KTCYx:
+   142                           	opt stack 0
+   143  000001                     i2Delay1KTCYx@unit:
+   144                           	opt stack 0
+   145                           
+   146                           ; 1 bytes @ 0x0
+   147  000001                     	ds	1
+   148  000002                     ?i2_delay_ms:
+   149                           	opt stack 0
+   150  000002                     i2delay_ms@t:
+   151                           	opt stack 0
+   152                           
+   153                           ; 1 bytes @ 0x1
+   154  000002                     	ds	1
+   155  000003                     ??i2_delay_ms:
+   156                           
+   157                           ; 0 bytes @ 0x2
+   158  000003                     	ds	1
+   159  000004                     i2delay_ms@i:
+   160                           	opt stack 0
+   161                           
+   162                           ; 1 bytes @ 0x3
+   163  000004                     	ds	1
+   164  000005                     ?i2_Delay_ms_:
+   165                           	opt stack 0
+   166  000005                     i2Delay_ms_@t:
+   167                           	opt stack 0
+   168                           
+   169                           ; 1 bytes @ 0x4
+   170  000005                     	ds	1
+   171  000006                     ??i2_Delay_ms_:
+   172                           
+   173                           ; 0 bytes @ 0x5
+   174  000006                     	ds	1
+   175  000007                     i2Delay_ms_@i:
+   176                           	opt stack 0
+   177                           
+   178                           ; 1 bytes @ 0x6
+   179  000007                     	ds	1
+   180  000008                     i2Delay_ms_@j:
+   181                           	opt stack 0
+   182                           
+   183                           ; 1 bytes @ 0x7
+   184  000008                     	ds	1
+   185  000009                     ??_Ext_isr:
+   186                           
+   187                           ; 0 bytes @ 0x8
+   188  000009                     	ds	15
+   189  000018                     Ext_isr@i:
+   190                           	opt stack 0
+   191                           
+   192                           ; 1 bytes @ 0x17
+   193  000018                     	ds	1
+   194  000019                     ?_Delay1KTCYx:
+   195                           	opt stack 0
+   196  000019                     Delay1KTCYx@unit:
+   197                           	opt stack 0
+   198                           
+   199                           ; 1 bytes @ 0x18
+   200  000019                     	ds	1
+   201  00001A                     ?_delay_ms:
+   202                           	opt stack 0
+   203  00001A                     delay_ms@t:
+   204                           	opt stack 0
+   205                           
+   206                           ; 1 bytes @ 0x19
+   207  00001A                     	ds	1
+   208  00001B                     ??_delay_ms:
+   209                           
+   210                           ; 0 bytes @ 0x1A
+   211  00001B                     	ds	1
+   212  00001C                     delay_ms@i:
+   213                           	opt stack 0
+   214                           
+   215                           ; 1 bytes @ 0x1B
+   216  00001C                     	ds	1
+   217  00001D                     ?_Delay_ms_:
+   218                           	opt stack 0
+   219  00001D                     Delay_ms_@t:
+   220                           	opt stack 0
+   221                           
+   222                           ; 1 bytes @ 0x1C
+   223  00001D                     	ds	1
+   224  00001E                     ??_Delay_ms_:
+   225                           
+   226                           ; 0 bytes @ 0x1D
+   227  00001E                     	ds	1
+   228  00001F                     Delay_ms_@i:
+   229                           	opt stack 0
+   230                           
+   231                           ; 1 bytes @ 0x1E
+   232  00001F                     	ds	1
+   233  000020                     Delay_ms_@j:
+   234                           	opt stack 0
+   235                           
+   236                           ; 1 bytes @ 0x1F
+   237  000020                     	ds	1
+   238  000021                     ??_main:
+   239                           
+   240                           ; 0 bytes @ 0x20
+   241  000021                     	ds	1
+   242                           intcon	equ	0xFF2
+   243                           
+   244 ;; *************** function _Delay_ms_ *****************
+   245 ;; Defined at:
+   246 ;;		line 46 in file "delay.c"
+   247 ;; Parameters:    Size  Location     Type
+   248 ;;  t               1   28[COMRAM] unsigned char 
+   249 ;; Auto vars:     Size  Location     Type
+   250 ;;  j               1   31[COMRAM] unsigned char 
+   251 ;;  i               1   30[COMRAM] unsigned char 
+   252 ;; Return value:  Size  Location     Type
+   253 ;;		None               void
+   254 ;; Registers used:
+   255 ;;		wreg, fsr0l, fsr0h, fsr1l, fsr1h, fsr1l, fsr1h, fsr2l, fsr2h, status,2, status,0, pclat, btemp, btemp+1, btemp+2, bt
+      +emp+3, btemp+4, btemp+5, btemp+6, btemp+7, tosl, structret, tblptrl, tblptrh, tblptru, prodl, prodh, bsr, cstack
+   256 ;; Tracked objects:
+   257 ;;		On entry : 0/0
+   258 ;;		On exit  : 0/0
+   259 ;;		Unchanged: 0/0
+   260 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   261 ;;      Params:         1       0       0       0       0       0       0       0       0
+   262 ;;      Locals:         2       0       0       0       0       0       0       0       0
+   263 ;;      Temps:          1       0       0       0       0       0       0       0       0
+   264 ;;      Totals:         4       0       0       0       0       0       0       0       0
+   265 ;;Total ram usage:        4 bytes
+   266 ;; Hardware stack levels used:    1
+   267 ;; Hardware stack levels required when called:    6
+   268 ;; This function calls:
+   269 ;;		_delay_ms
+   270 ;; This function is called by:
+   271 ;;		_main
+   272 ;; This function uses a non-reentrant model
+   273 ;;
+   274                           
+   275                           	psect	text1
+   276  00010A                     __ptext1:
+   277                           	opt stack 0
+   278  00010A                     _Delay_ms_:
+   279                           	opt stack 24
+   280                           
+   281                           ;delay.c: 47: unsigned char i,j;
+   282                           ;delay.c: 48: for(i=0;i<t;i++)
+   283                           
+   284                           ;incstack = 0
+   285                           ;incstack = 0
+   286  00010A  6E1E               	movwf	??_Delay_ms_& (0+255),c
+   287  00010C  0E00               	movlw	0
+   288  00010E  6E1F               	movwf	Delay_ms_@i,c
+   289  000110  501E               	movf	??_Delay_ms_& (0+255),w,c
+   290  000112  D010               	goto	l666
+   291  000114                     l652:
+   292                           
+   293                           ;delay.c: 49: for(j=0;j<5;j++)
+   294  000114  6E1E               	movwf	??_Delay_ms_& (0+255),c
+   295  000116  0E00               	movlw	0
+   296  000118  6E20               	movwf	Delay_ms_@j,c
+   297  00011A  501E               	movf	??_Delay_ms_& (0+255),w,c
+   298  00011C  D007               	goto	L1
+   299  00011E                     l658:
+   300                           
+   301                           ;delay.c: 50: delay_ms(100);
+   302  00011E  6E1E               	movwf	??_Delay_ms_& (0+255),c
+   303  000120  0E64               	movlw	100
+   304  000122  6E1A               	movwf	?_delay_ms,c
+   305  000124  501E               	movf	??_Delay_ms_& (0+255),w,c
+   306  000126  ECB9  F000         	call	_delay_ms	;wreg free
+   307  00012A  2A20               	incf	Delay_ms_@j,f,c
+   308  00012C                     L1:
+   309  00012C  0E04               	movlw	4
+   310  00012E  6420               	cpfsgt	Delay_ms_@j,c
+   311  000130  D7F6               	goto	l658
+   312  000132  2A1F               	incf	Delay_ms_@i,f,c
+   313  000134                     l666:
+   314  000134  501D               	movf	Delay_ms_@t,w,c
+   315  000136  5C1F               	subwf	Delay_ms_@i,w,c
+   316  000138  B0D8               	btfsc	status,0,c
+   317  00013A  0012               	return	
+   318  00013C  D7EB               	goto	l652
+   319  00013E                     __end_of_Delay_ms_:
+   320                           	opt stack 0
+   321                           intcon	equ	0xFF2
+   322                           status	equ	0xFD8
+   323                           
+   324 ;; *************** function _delay_ms *****************
+   325 ;; Defined at:
+   326 ;;		line 19 in file "delay.c"
+   327 ;; Parameters:    Size  Location     Type
+   328 ;;  t               1   25[COMRAM] unsigned char 
+   329 ;; Auto vars:     Size  Location     Type
+   330 ;;  i               1   27[COMRAM] unsigned char 
+   331 ;; Return value:  Size  Location     Type
+   332 ;;		None               void
+   333 ;; Registers used:
+   334 ;;		wreg, fsr0l, fsr0h, fsr1l, fsr1h, fsr1l, fsr1h, fsr2l, fsr2h, status,2, status,0, pclat, btemp, btemp+1, btemp+2, bt
+      +emp+3, btemp+4, btemp+5, btemp+6, btemp+7, tosl, structret, tblptrl, tblptrh, tblptru, prodl, prodh, bsr, cstack
+   335 ;; Tracked objects:
+   336 ;;		On entry : 0/0
+   337 ;;		On exit  : 0/0
+   338 ;;		Unchanged: 0/0
+   339 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   340 ;;      Params:         1       0       0       0       0       0       0       0       0
+   341 ;;      Locals:         1       0       0       0       0       0       0       0       0
+   342 ;;      Temps:          1       0       0       0       0       0       0       0       0
+   343 ;;      Totals:         3       0       0       0       0       0       0       0       0
+   344 ;;Total ram usage:        3 bytes
+   345 ;; Hardware stack levels used:    1
+   346 ;; Hardware stack levels required when called:    5
+   347 ;; This function calls:
+   348 ;;		_Delay1KTCYx
+   349 ;; This function is called by:
+   350 ;;		_Delay_ms_
+   351 ;;		_Delay_s
+   352 ;; This function uses a non-reentrant model
+   353 ;;
+   354                           
+   355                           	psect	text2
+   356  000172                     __ptext2:
+   357                           	opt stack 0
+   358  000172                     _delay_ms:
+   359                           	opt stack 24
+   360                           
+   361                           ;delay.c: 20: unsigned char i;
+   362                           ;delay.c: 21: for (i=0;i<=t;i++)
+   363                           
+   364                           ;incstack = 0
+   365                           ;incstack = 0
+   366  000172  6E1B               	movwf	??_delay_ms& (0+255),c
+   367  000174  0E00               	movlw	0
+   368  000176  6E1C               	movwf	delay_ms@i,c
+   369  000178  501B               	movf	??_delay_ms& (0+255),w,c
+   370  00017A  D007               	goto	l694
+   371  00017C                     l690:
+   372                           
+   373                           ;delay.c: 22: Delay1KTCYx(5);
+   374  00017C  6E1B               	movwf	??_delay_ms& (0+255),c
+   375  00017E  0E05               	movlw	5
+   376  000180  6E19               	movwf	?_Delay1KTCYx,c
+   377  000182  501B               	movf	??_delay_ms& (0+255),w,c
+   378  000184  ECD9  F000         	call	_Delay1KTCYx	;wreg free
+   379  000188  2A1C               	incf	delay_ms@i,f,c
+   380  00018A                     l694:
+   381  00018A  501C               	movf	delay_ms@i,w,c
+   382  00018C  601A               	cpfslt	delay_ms@t,c
+   383  00018E  D7F6               	goto	l690
+   384                           
+   385                           ;delay.c: 26: return;
+   386  000190  0012               	return	
+   387  000192                     __end_of_delay_ms:
+   388                           	opt stack 0
+   389                           intcon	equ	0xFF2
+   390                           status	equ	0xFD8
+   391                           
+   392 ;; *************** function _Delay1KTCYx *****************
+   393 ;; Defined at:
+   394 ;;		line 9 in file "C:\Program Files (x86)\Microchip\xc8\v1.21\sources\pic18\d1ktcyx.c"
+   395 ;; Parameters:    Size  Location     Type
+   396 ;;  unit            1   24[COMRAM] unsigned char 
+   397 ;; Auto vars:     Size  Location     Type
+   398 ;;		None
+   399 ;; Return value:  Size  Location     Type
+   400 ;;		None               void
+   401 ;; Registers used:
+   402 ;;		wreg
+   403 ;; Tracked objects:
+   404 ;;		On entry : 0/0
+   405 ;;		On exit  : 0/0
+   406 ;;		Unchanged: 0/0
+   407 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   408 ;;      Params:         1       0       0       0       0       0       0       0       0
+   409 ;;      Locals:         0       0       0       0       0       0       0       0       0
+   410 ;;      Temps:          0       0       0       0       0       0       0       0       0
+   411 ;;      Totals:         1       0       0       0       0       0       0       0       0
+   412 ;;Total ram usage:        1 bytes
+   413 ;; Hardware stack levels used:    1
+   414 ;; Hardware stack levels required when called:    4
+   415 ;; This function calls:
+   416 ;;		Nothing
+   417 ;; This function is called by:
+   418 ;;		_delay_ms
+   419 ;;		_delay_us
+   420 ;; This function uses a non-reentrant model
+   421 ;;
+   422                           
+   423                           	psect	text3
+   424  0001B2                     __ptext3:
+   425                           	opt stack 0
+   426  0001B2                     _Delay1KTCYx:
+   427                           	opt stack 24
+   428  0001B2                     l272:
+   429  0001B2  0EFA               	movlw	250
+   430  0001B4                     u207:
+   431  0001B4  F000               	nop	
+   432  0001B6  2EE8               	decfsz	wreg,f,c
+   433  0001B8  D7FD               	goto	u207
+   434  0001BA  2E19               	decfsz	Delay1KTCYx@unit,f,c
+   435  0001BC  D7FA               	goto	l272
+   436  0001BE  0012               	return	
+   437  0001C0                     __end_of_Delay1KTCYx:
+   438                           	opt stack 0
+   439                           intcon	equ	0xFF2
+   440                           wreg	equ	0xFE8
+   441                           status	equ	0xFD8
+   442                           
+   443 ;; *************** function _Config_Intrrupt_Ext *****************
+   444 ;; Defined at:
+   445 ;;		line 58 in file "main.c"
+   446 ;; Parameters:    Size  Location     Type
+   447 ;;		None
+   448 ;; Auto vars:     Size  Location     Type
+   449 ;;		None
+   450 ;; Return value:  Size  Location     Type
+   451 ;;		None               void
+   452 ;; Registers used:
+   453 ;;		wreg
+   454 ;; Tracked objects:
+   455 ;;		On entry : 0/0
+   456 ;;		On exit  : 0/0
+   457 ;;		Unchanged: 0/0
+   458 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   459 ;;      Params:         0       0       0       0       0       0       0       0       0
+   460 ;;      Locals:         0       0       0       0       0       0       0       0       0
+   461 ;;      Temps:          0       0       0       0       0       0       0       0       0
+   462 ;;      Totals:         0       0       0       0       0       0       0       0       0
+   463 ;;Total ram usage:        0 bytes
+   464 ;; Hardware stack levels used:    1
+   465 ;; Hardware stack levels required when called:    4
+   466 ;; This function calls:
+   467 ;;		Nothing
+   468 ;; This function is called by:
+   469 ;;		_main
+   470 ;; This function uses a non-reentrant model
+   471 ;;
+   472                           
+   473                           	psect	text4
+   474  0001CE                     __ptext4:
+   475                           	opt stack 0
+   476  0001CE                     _Config_Intrrupt_Ext:
+   477                           	opt stack 26
+   478                           
+   479                           ;main.c: 59: INTCONbits.INT0IE = 1;
+   480                           
+   481                           ;incstack = 0
+   482                           ;incstack = 0
+   483  0001CE  88F2               	bsf	intcon,4,c	;volatile
+   484                           
+   485                           ;main.c: 60: INTCONbits.INT0IF == 0;
+   486  0001D0  50F2               	movf	intcon,w,c	;volatile
+   487                           
+   488                           ;main.c: 61: INTCONbits.PEIE = 1;
+   489  0001D2  8CF2               	bsf	intcon,6,c	;volatile
+   490  0001D4  0012               	return	
+   491  0001D6                     __end_of_Config_Intrrupt_Ext:
+   492                           	opt stack 0
+   493                           intcon	equ	0xFF2
+   494                           wreg	equ	0xFE8
+   495                           status	equ	0xFD8
+   496                           
+   497 ;; *************** function _Ext_isr *****************
+   498 ;; Defined at:
+   499 ;;		line 103 in file "main.c"
+   500 ;; Parameters:    Size  Location     Type
+   501 ;;		None
+   502 ;; Auto vars:     Size  Location     Type
+   503 ;;  i               1   23[COMRAM] unsigned char 
+   504 ;; Return value:  Size  Location     Type
+   505 ;;		None               void
+   506 ;; Registers used:
+   507 ;;		wreg, status,2, status,0, cstack
+   508 ;; Tracked objects:
+   509 ;;		On entry : 0/0
+   510 ;;		On exit  : 0/0
+   511 ;;		Unchanged: 0/0
+   512 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   513 ;;      Params:         0       0       0       0       0       0       0       0       0
+   514 ;;      Locals:         1       0       0       0       0       0       0       0       0
+   515 ;;      Temps:         15       0       0       0       0       0       0       0       0
+   516 ;;      Totals:        16       0       0       0       0       0       0       0       0
+   517 ;;Total ram usage:       16 bytes
+   518 ;; Hardware stack levels used:    1
+   519 ;; Hardware stack levels required when called:    3
+   520 ;; This function calls:
+   521 ;;		i2_Delay_ms_
+   522 ;; This function is called by:
+   523 ;;		Interrupt level 2
+   524 ;; This function uses a non-reentrant model
+   525 ;;
+   526                           
+   527                           	psect	intcode
+   528  000008                     __pintcode:
+   529                           	opt stack 0
+   530  000008                     _Ext_isr:
+   531                           	opt stack 24
+   532                           
+   533                           ;incstack = 0
+   534  000008  CFFA F00A          	movff	pclath,??_Ext_isr+1
+   535  00000C  CFFB F00B          	movff	pclatu,??_Ext_isr+2
+   536  000010  ED0C  F000         	call	int_func,f	;refresh shadow registers
+   537                           pclatu	equ	0xFFB
+   538                           pclath	equ	0xFFA
+   539                           intcon	equ	0xFF2
+   540                           wreg	equ	0xFE8
+   541                           status	equ	0xFD8
+   542                           
+   543                           	psect	intcode_body
+   544  000018                     __pintcode_body:
+   545                           	opt stack 24
+   546  000018                     int_func:
+   547                           	opt stack 24
+   548  000018  0006               	pop		; remove dummy address from shadow register refresh
+   549  00001A  CFE9 F00C          	movff	fsr0l,??_Ext_isr+3
+   550  00001E  CFEA F00D          	movff	fsr0h,??_Ext_isr+4
+   551  000022  CFE1 F00E          	movff	fsr1l,??_Ext_isr+5
+   552  000026  CFE2 F00F          	movff	fsr1h,??_Ext_isr+6
+   553  00002A  CFD9 F010          	movff	fsr2l,??_Ext_isr+7
+   554  00002E  CFDA F011          	movff	fsr2h,??_Ext_isr+8
+   555  000032  CFF3 F012          	movff	prodl,??_Ext_isr+9
+   556  000036  CFF4 F013          	movff	prodh,??_Ext_isr+10
+   557  00003A  CFF6 F014          	movff	tblptrl,??_Ext_isr+11
+   558  00003E  CFF7 F015          	movff	tblptrh,??_Ext_isr+12
+   559  000042  CFF8 F016          	movff	tblptru,??_Ext_isr+13
+   560  000046  CFF5 F017          	movff	tablat,??_Ext_isr+14
+   561  00004A                     
+   562                           ;main.c: 104: unsigned char i;
+   563                           ;main.c: 105: if(INTCONbits.INT0IF)
+   564  00004A  A2F2               	btfss	intcon,1,c	;volatile
+   565  00004C  D001               	goto	i2u17_41
+   566  00004E  D001               	goto	i2u17_40
+   567  000050                     i2u17_41:
+   568  000050  D024               	goto	i2l25
+   569  000052                     i2u17_40:
+   570  000052                     
+   571                           ;main.c: 106: {
+   572                           ;main.c: 107: LATDbits.LATD0 = 0;
+   573  000052  908C               	bcf	3980,0,c	;volatile
+   574  000054                     
+   575                           ;main.c: 108: for(i=0;i<10;i++)
+   576  000054  6E09               	movwf	??_Ext_isr& (0+255),c
+   577  000056  0E00               	movlw	0
+   578  000058  6E18               	movwf	Ext_isr@i,c
+   579  00005A  5009               	movf	??_Ext_isr& (0+255),w,c
+   580  00005C  0E09               	movlw	9
+   581  00005E  6418               	cpfsgt	Ext_isr@i,c
+   582  000060  D001               	goto	i2u18_41
+   583  000062  D001               	goto	i2u18_40
+   584  000064                     i2u18_41:
+   585  000064  D002               	goto	i2l796
+   586  000066                     i2u18_40:
+   587  000066  D017               	goto	i2l24
+   588  000068  D016               	goto	i2l24
+   589  00006A                     i2l796:
+   590                           
+   591                           ;main.c: 109: {
+   592                           ;main.c: 110: LATDbits.LATD1 = ~PORTDbits.RD1;
+   593  00006A  3083               	rrcf	3971,w,c	;volatile
+   594  00006C  0B01               	andlw	1
+   595  00006E  0AFF               	xorlw	255
+   596  000070  6E09               	movwf	??_Ext_isr& (0+255),c
+   597  000072  4609               	rlncf	??_Ext_isr,f,c
+   598  000074  508C               	movf	3980,w,c	;volatile
+   599  000076  1809               	xorwf	??_Ext_isr,w,c
+   600  000078  0BFD               	andlw	-3
+   601  00007A  1809               	xorwf	??_Ext_isr,w,c
+   602  00007C  6E8C               	movwf	3980,c	;volatile
+   603  00007E                     
+   604                           ;main.c: 111: Delay_ms_(1);
+   605  00007E  6E09               	movwf	??_Ext_isr& (0+255),c
+   606  000080  0E01               	movlw	1
+   607  000082  6E05               	movwf	?i2_Delay_ms_,c
+   608  000084  5009               	movf	??_Ext_isr& (0+255),w,c
+   609  000086  EC9F  F000         	call	i2_Delay_ms_	;wreg free
+   610  00008A  2A18               	incf	Ext_isr@i,f,c
+   611  00008C  0E09               	movlw	9
+   612  00008E  6418               	cpfsgt	Ext_isr@i,c
+   613  000090  D001               	goto	i2u19_41
+   614  000092  D001               	goto	i2u19_40
+   615  000094                     i2u19_41:
+   616  000094  D7EA               	goto	i2l796
+   617  000096                     i2u19_40:
+   618  000096                     i2l24:
+   619                           
+   620                           ;main.c: 112: }
+   621                           ;main.c: 113: INTCONbits.INT0IF =0;
+   622  000096  92F2               	bcf	intcon,1,c	;volatile
+   623  000098  D000               	goto	i2l25
+   624  00009A                     i2l25:
+   625  00009A  C017  FFF5         	movff	??_Ext_isr+14,tablat
+   626  00009E  C016  FFF8         	movff	??_Ext_isr+13,tblptru
+   627  0000A2  C015  FFF7         	movff	??_Ext_isr+12,tblptrh
+   628  0000A6  C014  FFF6         	movff	??_Ext_isr+11,tblptrl
+   629  0000AA  C013  FFF4         	movff	??_Ext_isr+10,prodh
+   630  0000AE  C012  FFF3         	movff	??_Ext_isr+9,prodl
+   631  0000B2  C011  FFDA         	movff	??_Ext_isr+8,fsr2h
+   632  0000B6  C010  FFD9         	movff	??_Ext_isr+7,fsr2l
+   633  0000BA  C00F  FFE2         	movff	??_Ext_isr+6,fsr1h
+   634  0000BE  C00E  FFE1         	movff	??_Ext_isr+5,fsr1l
+   635  0000C2  C00D  FFEA         	movff	??_Ext_isr+4,fsr0h
+   636  0000C6  C00C  FFE9         	movff	??_Ext_isr+3,fsr0l
+   637  0000CA  C00B  FFFB         	movff	??_Ext_isr+2,pclatu
+   638  0000CE  C00A  FFFA         	movff	??_Ext_isr+1,pclath
+   639  0000D2  0011               	retfie		f
+   640  0000D4                     __end_of_Ext_isr:
+   641                           	opt stack 0
+   642                           pclatu	equ	0xFFB
+   643                           pclath	equ	0xFFA
+   644                           tblptru	equ	0xFF8
+   645                           tblptrh	equ	0xFF7
+   646                           tblptrl	equ	0xFF6
+   647                           tablat	equ	0xFF5
+   648                           prodh	equ	0xFF4
+   649                           prodl	equ	0xFF3
+   650                           intcon	equ	0xFF2
+   651                           fsr0h	equ	0xFEA
+   652                           fsr0l	equ	0xFE9
+   653                           wreg	equ	0xFE8
+   654                           fsr1h	equ	0xFE2
+   655                           fsr1l	equ	0xFE1
+   656                           fsr2h	equ	0xFDA
+   657                           fsr2l	equ	0xFD9
+   658                           status	equ	0xFD8
+   659                           
+   660 ;; *************** function i2_Delay_ms_ *****************
+   661 ;; Defined at:
+   662 ;;		line 46 in file "delay.c"
+   663 ;; Parameters:    Size  Location     Type
+   664 ;;  t               1    4[COMRAM] unsigned char 
+   665 ;; Auto vars:     Size  Location     Type
+   666 ;;  Delay_ms_       1    7[COMRAM] unsigned char 
+   667 ;;  Delay_ms_       1    6[COMRAM] unsigned char 
+   668 ;; Return value:  Size  Location     Type
+   669 ;;		None               void
+   670 ;; Registers used:
+   671 ;;		wreg, status,2, status,0, cstack
+   672 ;; Tracked objects:
+   673 ;;		On entry : 0/0
+   674 ;;		On exit  : 0/0
+   675 ;;		Unchanged: 0/0
+   676 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   677 ;;      Params:         1       0       0       0       0       0       0       0       0
+   678 ;;      Locals:         2       0       0       0       0       0       0       0       0
+   679 ;;      Temps:          1       0       0       0       0       0       0       0       0
+   680 ;;      Totals:         4       0       0       0       0       0       0       0       0
+   681 ;;Total ram usage:        4 bytes
+   682 ;; Hardware stack levels used:    1
+   683 ;; Hardware stack levels required when called:    2
+   684 ;; This function calls:
+   685 ;;		i2_delay_ms
+   686 ;; This function is called by:
+   687 ;;		_Ext_isr
+   688 ;; This function uses a non-reentrant model
+   689 ;;
+   690                           
+   691                           	psect	text6
+   692  00013E                     __ptext6:
+   693                           	opt stack 0
+   694  00013E                     i2_Delay_ms_:
+   695                           	opt stack 24
+   696                           
+   697                           ;delay.c: 47: unsigned char i,j;
+   698                           ;delay.c: 48: for(i=0;i<t;i++)
+   699                           
+   700                           ;incstack = 0
+   701                           ;incstack = 0
+   702  00013E  6E06               	movwf	??i2_Delay_ms_& (0+255),c
+   703  000140  0E00               	movlw	0
+   704  000142  6E07               	movwf	i2Delay_ms_@i,c
+   705  000144  5006               	movf	??i2_Delay_ms_& (0+255),w,c
+   706  000146  D010               	goto	i2l784
+   707  000148                     i2l770:
+   708                           
+   709                           ;delay.c: 49: for(j=0;j<5;j++)
+   710  000148  6E06               	movwf	??i2_Delay_ms_& (0+255),c
+   711  00014A  0E00               	movlw	0
+   712  00014C  6E08               	movwf	i2Delay_ms_@j,c
+   713  00014E  5006               	movf	??i2_Delay_ms_& (0+255),w,c
+   714  000150  D007               	goto	L2
+   715  000152                     i2l776:
+   716                           
+   717                           ;delay.c: 50: delay_ms(100);
+   718  000152  6E06               	movwf	??i2_Delay_ms_& (0+255),c
+   719  000154  0E64               	movlw	100
+   720  000156  6E02               	movwf	?i2_delay_ms,c
+   721  000158  5006               	movf	??i2_Delay_ms_& (0+255),w,c
+   722  00015A  ECC9  F000         	call	i2_delay_ms	;wreg free
+   723  00015E  2A08               	incf	i2Delay_ms_@j,f,c
+   724  000160                     L2:
+   725  000160  0E04               	movlw	4
+   726  000162  6408               	cpfsgt	i2Delay_ms_@j,c
+   727  000164  D7F6               	goto	i2l776
+   728  000166  2A07               	incf	i2Delay_ms_@i,f,c
+   729  000168                     i2l784:
+   730  000168  5005               	movf	i2Delay_ms_@t,w,c
+   731  00016A  5C07               	subwf	i2Delay_ms_@i,w,c
+   732  00016C  B0D8               	btfsc	status,0,c
+   733  00016E  0012               	return	
+   734  000170  D7EB               	goto	i2l770
+   735  000172                     __end_ofi2_Delay_ms_:
+   736                           	opt stack 0
+   737                           pclatu	equ	0xFFB
+   738                           pclath	equ	0xFFA
+   739                           tblptru	equ	0xFF8
+   740                           tblptrh	equ	0xFF7
+   741                           tblptrl	equ	0xFF6
+   742                           tablat	equ	0xFF5
+   743                           prodh	equ	0xFF4
+   744                           prodl	equ	0xFF3
+   745                           intcon	equ	0xFF2
+   746                           fsr0h	equ	0xFEA
+   747                           fsr0l	equ	0xFE9
+   748                           wreg	equ	0xFE8
+   749                           fsr1h	equ	0xFE2
+   750                           fsr1l	equ	0xFE1
+   751                           fsr2h	equ	0xFDA
+   752                           fsr2l	equ	0xFD9
+   753                           status	equ	0xFD8
+   754                           
+   755 ;; *************** function i2_delay_ms *****************
+   756 ;; Defined at:
+   757 ;;		line 19 in file "delay.c"
+   758 ;; Parameters:    Size  Location     Type
+   759 ;;  t               1    1[COMRAM] unsigned char 
+   760 ;; Auto vars:     Size  Location     Type
+   761 ;;  delay_ms        1    3[COMRAM] unsigned char 
+   762 ;; Return value:  Size  Location     Type
+   763 ;;		None               void
+   764 ;; Registers used:
+   765 ;;		wreg, status,2, status,0, cstack
+   766 ;; Tracked objects:
+   767 ;;		On entry : 0/0
+   768 ;;		On exit  : 0/0
+   769 ;;		Unchanged: 0/0
+   770 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   771 ;;      Params:         1       0       0       0       0       0       0       0       0
+   772 ;;      Locals:         1       0       0       0       0       0       0       0       0
+   773 ;;      Temps:          1       0       0       0       0       0       0       0       0
+   774 ;;      Totals:         3       0       0       0       0       0       0       0       0
+   775 ;;Total ram usage:        3 bytes
+   776 ;; Hardware stack levels used:    1
+   777 ;; Hardware stack levels required when called:    1
+   778 ;; This function calls:
+   779 ;;		i2_Delay1KTCYx
+   780 ;; This function is called by:
+   781 ;;		i2_Delay_ms_
+   782 ;; This function uses a non-reentrant model
+   783 ;;
+   784                           
+   785                           	psect	text7
+   786  000192                     __ptext7:
+   787                           	opt stack 0
+   788  000192                     i2_delay_ms:
+   789                           	opt stack 24
+   790                           
+   791                           ;delay.c: 20: unsigned char i;
+   792                           ;delay.c: 21: for (i=0;i<=t;i++)
+   793                           
+   794                           ;incstack = 0
+   795                           ;incstack = 0
+   796  000192  6E03               	movwf	??i2_delay_ms& (0+255),c
+   797  000194  0E00               	movlw	0
+   798  000196  6E04               	movwf	i2delay_ms@i,c
+   799  000198  5003               	movf	??i2_delay_ms& (0+255),w,c
+   800  00019A  D007               	goto	i2l748
+   801  00019C                     i2l744:
+   802                           
+   803                           ;delay.c: 22: Delay1KTCYx(5);
+   804  00019C  6E03               	movwf	??i2_delay_ms& (0+255),c
+   805  00019E  0E05               	movlw	5
+   806  0001A0  6E01               	movwf	?i2_Delay1KTCYx,c
+   807  0001A2  5003               	movf	??i2_delay_ms& (0+255),w,c
+   808  0001A4  ECE0  F000         	call	i2_Delay1KTCYx	;wreg free
+   809  0001A8  2A04               	incf	i2delay_ms@i,f,c
+   810  0001AA                     i2l748:
+   811  0001AA  5004               	movf	i2delay_ms@i,w,c
+   812  0001AC  6002               	cpfslt	i2delay_ms@t,c
+   813  0001AE  D7F6               	goto	i2l744
+   814                           
+   815                           ;delay.c: 26: return;
+   816  0001B0  0012               	return	
+   817  0001B2                     __end_ofi2_delay_ms:
+   818                           	opt stack 0
+   819                           pclatu	equ	0xFFB
+   820                           pclath	equ	0xFFA
+   821                           tblptru	equ	0xFF8
+   822                           tblptrh	equ	0xFF7
+   823                           tblptrl	equ	0xFF6
+   824                           tablat	equ	0xFF5
+   825                           prodh	equ	0xFF4
+   826                           prodl	equ	0xFF3
+   827                           intcon	equ	0xFF2
+   828                           fsr0h	equ	0xFEA
+   829                           fsr0l	equ	0xFE9
+   830                           wreg	equ	0xFE8
+   831                           fsr1h	equ	0xFE2
+   832                           fsr1l	equ	0xFE1
+   833                           fsr2h	equ	0xFDA
+   834                           fsr2l	equ	0xFD9
+   835                           status	equ	0xFD8
+   836                           
+   837 ;; *************** function i2_Delay1KTCYx *****************
+   838 ;; Defined at:
+   839 ;;		line 9 in file "C:\Program Files (x86)\Microchip\xc8\v1.21\sources\pic18\d1ktcyx.c"
+   840 ;; Parameters:    Size  Location     Type
+   841 ;;  unit            1    0[COMRAM] unsigned char 
+   842 ;; Auto vars:     Size  Location     Type
+   843 ;;		None
+   844 ;; Return value:  Size  Location     Type
+   845 ;;		None               void
+   846 ;; Registers used:
+   847 ;;		wreg
+   848 ;; Tracked objects:
+   849 ;;		On entry : 0/0
+   850 ;;		On exit  : 0/0
+   851 ;;		Unchanged: 0/0
+   852 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   853 ;;      Params:         1       0       0       0       0       0       0       0       0
+   854 ;;      Locals:         0       0       0       0       0       0       0       0       0
+   855 ;;      Temps:          0       0       0       0       0       0       0       0       0
+   856 ;;      Totals:         1       0       0       0       0       0       0       0       0
+   857 ;;Total ram usage:        1 bytes
+   858 ;; Hardware stack levels used:    1
+   859 ;; This function calls:
+   860 ;;		Nothing
+   861 ;; This function is called by:
+   862 ;;		i2_delay_ms
+   863 ;; This function uses a non-reentrant model
+   864 ;;
+   865                           
+   866                           	psect	text8
+   867  0001C0                     __ptext8:
+   868                           	opt stack 0
+   869  0001C0                     i2_Delay1KTCYx:
+   870                           	opt stack 24
+   871  0001C0                     i2l272:
+   872  0001C0  0EFA               	movlw	250
+   873  0001C2                     i2u21_47:
+   874  0001C2  F000               	nop	
+   875  0001C4  2EE8               	decfsz	wreg,f,c
+   876  0001C6  D7FD               	goto	i2u21_47
+   877  0001C8  2E01               	decfsz	i2Delay1KTCYx@unit,f,c
+   878  0001CA  D7FA               	goto	i2l272
+   879  0001CC  0012               	return	
+   880  0001CE                     __end_ofi2_Delay1KTCYx:
+   881                           	opt stack 0
+   882  0000                     pclatu	equ	0xFFB
+   883                           pclath	equ	0xFFA
+   884                           tblptru	equ	0xFF8
+   885                           tblptrh	equ	0xFF7
+   886                           tblptrl	equ	0xFF6
+   887                           tablat	equ	0xFF5
+   888                           prodh	equ	0xFF4
+   889                           prodl	equ	0xFF3
+   890                           intcon	equ	0xFF2
+   891                           fsr0h	equ	0xFEA
+   892                           fsr0l	equ	0xFE9
+   893                           wreg	equ	0xFE8
+   894                           fsr1h	equ	0xFE2
+   895                           fsr1l	equ	0xFE1
+   896                           fsr2h	equ	0xFDA
+   897                           fsr2l	equ	0xFD9
+   898                           status	equ	0xFD8
+   899                           pclatu	equ	0xFFB
+   900                           pclath	equ	0xFFA
+   901                           tblptru	equ	0xFF8
+   902                           tblptrh	equ	0xFF7
+   903                           tblptrl	equ	0xFF6
+   904                           tablat	equ	0xFF5
+   905                           prodh	equ	0xFF4
+   906                           prodl	equ	0xFF3
+   907                           intcon	equ	0xFF2
+   908                           fsr0h	equ	0xFEA
+   909                           fsr0l	equ	0xFE9
+   910                           wreg	equ	0xFE8
+   911                           fsr1h	equ	0xFE2
+   912                           fsr1l	equ	0xFE1
+   913                           fsr2h	equ	0xFDA
+   914                           fsr2l	equ	0xFD9
+   915                           status	equ	0xFD8
+   916                           
+   917                           	psect	rparam
+   918  0000                     pclatu	equ	0xFFB
+   919                           pclath	equ	0xFFA
+   920                           tblptru	equ	0xFF8
+   921                           tblptrh	equ	0xFF7
+   922                           tblptrl	equ	0xFF6
+   923                           tablat	equ	0xFF5
+   924                           prodh	equ	0xFF4
+   925                           prodl	equ	0xFF3
+   926                           intcon	equ	0xFF2
+   927                           fsr0h	equ	0xFEA
+   928                           fsr0l	equ	0xFE9
+   929                           wreg	equ	0xFE8
+   930                           fsr1h	equ	0xFE2
+   931                           fsr1l	equ	0xFE1
+   932                           fsr2h	equ	0xFDA
+   933                           fsr2l	equ	0xFD9
+   934                           status	equ	0xFD8
+
+
+Data Sizes:
+    Strings     0
+    Constant    0
+    Data        0
+    BSS         0
+    Persistent  0
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMRAM           95     33      33
+    BANK0           160      0       0
+    BANK1           256      0       0
+    BANK2           256      0       0
+    BANK3           256      0       0
+    BANK4           256      0       0
+    BANK5           256      0       0
+    BANK6           256      0       0
+    BANK7           256      0       0
+
+Pointer List with Targets:
+
+    None.
+
+Critical Paths under _main in COMRAM
+
+    _main->_Delay_ms_
+    _Delay_ms_->_delay_ms
+    _delay_ms->_Delay1KTCYx
+
+Critical Paths under _Ext_isr in COMRAM
+
+    _Ext_isr->i2_Delay_ms_
+    i2_Delay_ms_->i2_delay_ms
+    i2_delay_ms->i2_Delay1KTCYx
+
+Critical Paths under _main in BANK0
+
+    None.
+
+Critical Paths under _Ext_isr in BANK0
+
+    None.
+
+Critical Paths under _main in BANK1
+
+    None.
+
+Critical Paths under _Ext_isr in BANK1
+
+    None.
+
+Critical Paths under _main in BANK2
+
+    None.
+
+Critical Paths under _Ext_isr in BANK2
+
+    None.
+
+Critical Paths under _main in BANK3
+
+    None.
+
+Critical Paths under _Ext_isr in BANK3
+
+    None.
+
+Critical Paths under _main in BANK4
+
+    None.
+
+Critical Paths under _Ext_isr in BANK4
+
+    None.
+
+Critical Paths under _main in BANK5
+
+    None.
+
+Critical Paths under _Ext_isr in BANK5
+
+    None.
+
+Critical Paths under _main in BANK6
+
+    None.
+
+Critical Paths under _Ext_isr in BANK6
+
+    None.
+
+Critical Paths under _main in BANK7
+
+    None.
+
+Critical Paths under _Ext_isr in BANK7
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                 1     1      0     105
+                                             32 COMRAM     1     1      0
+                _Config_Intrrupt_Ext
+                          _Delay_ms_
+ ---------------------------------------------------------------------------------
+ (1) _Delay_ms_                                            4     3      1     105
+                                             28 COMRAM     4     3      1
+                           _delay_ms
+ ---------------------------------------------------------------------------------
+ (2) _delay_ms                                             3     2      1      45
+                                             25 COMRAM     3     2      1
+                        _Delay1KTCYx
+ ---------------------------------------------------------------------------------
+ (3) _Delay1KTCYx                                          1     0      1      15
+                                             24 COMRAM     1     0      1
+ ---------------------------------------------------------------------------------
+ (1) _Config_Intrrupt_Ext                                  0     0      0       0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 3
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (4) _Ext_isr                                             16    16      0     450
+                                              8 COMRAM    16    16      0
+                        i2_Delay_ms_
+ ---------------------------------------------------------------------------------
+ (5) i2_Delay_ms_                                          4     3      1     420
+                                              4 COMRAM     4     3      1
+                         i2_delay_ms
+ ---------------------------------------------------------------------------------
+ (6) i2_delay_ms                                           3     2      1     180
+                                              1 COMRAM     3     2      1
+                      i2_Delay1KTCYx
+ ---------------------------------------------------------------------------------
+ (7) i2_Delay1KTCYx                                        1     0      1      60
+                                              0 COMRAM     1     0      1
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 7
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+   _Config_Intrrupt_Ext
+   _Delay_ms_
+     _delay_ms
+       _Delay1KTCYx
+
+ _Ext_isr (ROOT)
+   i2_Delay_ms_
+     i2_delay_ms
+       i2_Delay1KTCYx
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+BITCOMRAM           5F      0       0       0        0.0%
+EEDATA             100      0       0       0        0.0%
+NULL                 0      0       0       0        0.0%
+CODE                 0      0       0       0        0.0%
+COMRAM              5F     21      21       1       34.7%
+STACK                0      0       B       2        0.0%
+DATA                 0      0       0       3        0.0%
+BITBANK0            A0      0       0       4        0.0%
+BANK0               A0      0       0       5        0.0%
+BITBANK1           100      0       0       6        0.0%
+BANK1              100      0       0       7        0.0%
+BITBANK2           100      0       0       8        0.0%
+BANK2              100      0       0       9        0.0%
+BITBANK3           100      0       0      10        0.0%
+BANK3              100      0       0      11        0.0%
+BITBANK4           100      0       0      12        0.0%
+BANK4              100      0       0      13        0.0%
+BITBANK5           100      0       0      14        0.0%
+BANK5              100      0       0      15        0.0%
+BITBANK6           100      0       0      16        0.0%
+BANK6              100      0       0      17        0.0%
+BITBANK7           100      0       0      18        0.0%
+BANK7              100      0       0      19        0.0%
+ABS                  0      0       0      20        0.0%
+BIGRAM             7FF      0       0      21        0.0%
+BITSFR               0      0       0      40        0.0%
+SFR                  0      0       0      40        0.0%
+
+
+Microchip Technology PIC18 Macro Assembler V1.21 build 54009 
+Symbol Table                                                                                   Sat Jul 19 15:05:58 2014
+
+                 __CFG_BOR$ON 000000                   __CFG_BORV$3 000000                  __CFG_CP0$OFF 000000  
+                __CFG_CP1$OFF 000000                  __CFG_CP2$OFF 000000                  __CFG_CP3$OFF 000000  
+                         l272 01B2                           l652 0114                           l690 017C  
+                         l658 011E                           l666 0134                           l684 00EA  
+                         l694 018A                  __CFG_CPB$OFF 000000                           u207 01B4  
+                __CFG_CPD$OFF 000000                           wreg 000FE8                  __CFG_FOSC$HS 000000  
+                  i2_delay_ms 0192                  __CFG_LVP$OFF 000000                  __CFG_WDT$OFF 000000  
+                        i2l22 009A                          i2l23 006A                          i2l24 0096  
+                        i2l25 009A                          _main 00D4                          fsr0h 000FEA  
+                        fsr1h 000FE2                          fsr0l 000FE9                          fsr2h 000FDA  
+                        fsr1l 000FE1                          fsr2l 000FD9                          pclat 000FFA  
+                        prodh 000FF4                          prodl 000FF3                          start 0014  
+               __CFG_IESO$OFF 000000                 __CFG_MCLRE$ON 000000               __end_of_Ext_isr 00D4  
+                 _Delay1KTCYx 01B2                 __CFG_PLLDIV$5 000000                         ?_main 0001  
+                       i2l272 01C0                         i2l800 008A                         i2l802 008C  
+                       i2l744 019C                         i2l770 0148                         i2l748 01AA  
+                       i2l790 0054                         i2l776 0152                         i2l784 0168  
+                       i2l792 005C                         i2l794 0068                         i2l786 004A  
+                       i2l796 006A                         i2l788 0052                         i2l798 007E  
+               __CFG_USBDIV$1 000000                 __CFG_PWRT$OFF 000000                 __CFG_WRT0$OFF 000000  
+               __CFG_WRT1$OFF 000000                 __CFG_WRT2$OFF 000000                 __CFG_WRT3$OFF 000000  
+              __CFG_EBTR0$OFF 000000                __CFG_FCMEN$OFF 000000                __CFG_EBTR1$OFF 000000  
+              __CFG_EBTR2$OFF 000000                __CFG_EBTR3$OFF 000000                 __CFG_WRTB$OFF 000000  
+               __CFG_WRTC$OFF 000000                 __CFG_WRTD$OFF 000000                __CFG_EBTRB$OFF 000000  
+                       tablat 000FF5                         status 000FD8                   i2delay_ms@i 0004  
+                 i2delay_ms@t 0002                __CFG_ICPRT$OFF 000000               __initialization 01D6  
+                __end_of_main 010A   __end_of_Config_Intrrupt_Ext 01D6            __size_of_Delay_ms_ 0034  
+                      ??_main 0021                 __activetblptr 000000                   ?i2_delay_ms 0002  
+             __CFG_CCP2MX$OFF 000000                        _ADCON1 000FC1              __end_of_delay_ms 0192  
+                   ??_Ext_isr 0009                  ?i2_Delay_ms_ 0005                __CFG_XINST$OFF 000000  
+              __CFG_STVREN$ON 000000         __end_ofi2_Delay1KTCYx 01CE                        tblptrh 000FF7  
+                      tblptrl 000FF6                        tblptru 000FF8             __end_of_Delay_ms_ 013E  
+                  __accesstop 0060       __end_of__initialization 01D6               __CFG_PBADEN$OFF 000000  
+              __pcstackCOMRAM 0001           __size_ofi2_delay_ms 0020             i2Delay1KTCYx@unit 0001  
+                ?_Delay1KTCYx 0019                     ?_delay_ms 001A                       i2u21_47 01C2  
+                     i2u17_40 0052                       i2u17_41 0050                       i2u18_40 0066  
+                     i2u18_41 0064                       i2u19_40 0096                       i2u19_41 0094  
+             __CFG_VREGEN$OFF 000000                       _Ext_isr 0008                       __Hparam 0000  
+                     __Lparam 0000          __size_ofi2_Delay_ms_ 0034                       __pcinit 01D6  
+                     __ramtop 0800                       __ptext0 00D4                       __ptext1 010A  
+                     __ptext2 0172                       __ptext3 01B2                       __ptext4 01CE  
+                     __ptext6 013E                       __ptext7 0192                       __ptext8 01C0  
+                ??i2_delay_ms 0003                    ??_delay_ms 001B                __pintcode_body 0018  
+        end_of_initialization 01D6                       int_func 0018            __end_ofi2_delay_ms 01B2  
+                   _PORTDbits 000F83  __size_of_Config_Intrrupt_Ext 0008                     _TRISDbits 000F95  
+                   _Delay_ms_ 010A          __size_of_Delay1KTCYx 000E           start_initialization 01D6  
+      __size_ofi2_Delay1KTCYx 000E                    ?_Delay_ms_ 001D              __CFG_LPT1OSC$OFF 000000  
+           __size_of_delay_ms 0020               Delay1KTCYx@unit 0019                      ?_Ext_isr 0001  
+                   __pintcode 0008                 i2_Delay1KTCYx 01C0                  i2Delay_ms_@i 0007  
+                i2Delay_ms_@j 0008                  i2Delay_ms_@t 0005                      _LATDbits 000F8C  
+                   delay_ms@i 001C                     delay_ms@t 001A           _Config_Intrrupt_Ext 01CE  
+               ??i2_Delay_ms_ 0006                   ??_Delay_ms_ 001E                      _RCONbits 000FD0  
+            __CFG_WDTPS$32768 000000                      _UCONbits 000F6D                ?i2_Delay1KTCYx 0001  
+        ?_Config_Intrrupt_Ext 0001                      Ext_isr@i 0018                      __Hrparam 0000  
+            __size_of_Ext_isr 00CC                      __Lrparam 0000           __end_ofi2_Delay_ms_ 0172  
+       ??_Config_Intrrupt_Ext 0019                      _delay_ms 0172                 __size_of_main 0036  
+             ??i2_Delay1KTCYx 0002                 ??_Delay1KTCYx 001A         __CFG_CPUDIV$OSC1_PLL2 000000  
+                  _INTCONbits 000FF2                    Delay_ms_@i 001F                    Delay_ms_@j 0020  
+                  Delay_ms_@t 001D                      intlevel2 0000                   i2_Delay_ms_ 013E  
+         __end_of_Delay1KTCYx 01C0  

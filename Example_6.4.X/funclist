@@ -1,0 +1,20 @@
+_OpenUSART: CODE, 148 0 90
+_Write_str: CODE, 396 0 54
+_Delay1KTCYx: CODE, 732 0 14
+_main: CODE, 318 0 78
+_Write: CODE, 746 0 14
+_function: CODE, 238 0 80
+__initialization: CODE, 550 0 36
+i2_Delay1KTCYx: CODE, 774 0 14
+_Rx_isr: CODE, 8 0 140
+_WriteUSART: CODE, 686 0 16
+i2_Write: CODE, 760 0 14
+_Config_Interrupt_Rx: CODE, 788 0 10
+i2_Write_str: CODE, 450 0 54
+i2_WriteUSART: CODE, 702 0 16
+_delay_ms: CODE, 592 0 32
+_ReadUSART: CODE, 656 0 30
+_UsartConfig: CODE, 718 0 14
+_Read: CODE, 798 0 8
+i2_delay_ms: CODE, 624 0 32
+Total: 746

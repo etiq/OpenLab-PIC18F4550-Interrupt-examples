@@ -1,0 +1,11 @@
+_Delay1KTCYx: CODE, 434 0 14
+_main: CODE, 212 0 54
+_Delay_ms_: CODE, 266 0 52
+__initialization: CODE, 470 0 0
+i2_Delay_ms_: CODE, 318 0 52
+_Ext_isr: CODE, 8 0 204
+i2_Delay1KTCYx: CODE, 448 0 14
+_delay_ms: CODE, 370 0 32
+i2_delay_ms: CODE, 402 0 32
+_Config_Intrrupt_Ext: CODE, 462 0 8
+Total: 462

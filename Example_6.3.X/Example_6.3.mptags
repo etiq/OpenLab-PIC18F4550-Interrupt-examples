@@ -1,0 +1,60 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.5.4	//
+!_TAG_REVISION_NAME	MCHPTags	//
+!_TAG_REVISION_VERSION	6.0.1	//
+CONFIG_H	C:\Users\tbi\Dropbox\Sunil Kumar_shared\CODE_Examples_C18_XC8_compatable\Z_TEST_CODES\Example_6.3.X\config.h	13;"	d	line:13
+Config_Interrupt_Rx	C:\Users\tbi\Dropbox\Sunil Kumar_shared\CODE_Examples_C18_XC8_compatable\Z_TEST_CODES\Example_6.3.X\uart.c	74;"	f	line:74	signature:(void)
+Config_Interrupt_Rx	C:\Users\tbi\Dropbox\Sunil Kumar_shared\CODE_Examples_C18_XC8_compatable\Z_TEST_CODES\Example_6.3.X\uart.h	84;"	p	line:84	signature:(void)
+Config_Interrupt_TMR0	C:\Users\tbi\Dropbox\Sunil Kumar_shared\CODE_Examples_C18_XC8_compatable\Z_TEST_CODES\Example_6.3.X\main.c	81;"	f	line:81	signature:(void)
+DELAY__H	C:\Users\tbi\Dropbox\Sunil Kumar_shared\CODE_Examples_C18_XC8_compatable\Z_TEST_CODES\Example_6.3.X\delay.h	13;"	d	line:13
+Delay_ms_	C:\Users\tbi\Dropbox\Sunil Kumar_shared\CODE_Examples_C18_XC8_compatable\Z_TEST_CODES\Example_6.3.X\delay.c	45;"	f	line:45	signature:(unsigned char t)
+Delay_ms_	C:\Users\tbi\Dropbox\Sunil Kumar_shared\CODE_Examples_C18_XC8_compatable\Z_TEST_CODES\Example_6.3.X\delay.h	45;"	p	line:45	signature:(unsigned char t)
+Delay_s	C:\Users\tbi\Dropbox\Sunil Kumar_shared\CODE_Examples_C18_XC8_compatable\Z_TEST_CODES\Example_6.3.X\delay.c	37;"	f	line:37	signature:(unsigned char t)
+Delay_s	C:\Users\tbi\Dropbox\Sunil Kumar_shared\CODE_Examples_C18_XC8_compatable\Z_TEST_CODES\Example_6.3.X\delay.h	37;"	p	line:37	signature:(unsigned char t)
+Read	C:\Users\tbi\Dropbox\Sunil Kumar_shared\CODE_Examples_C18_XC8_compatable\Z_TEST_CODES\Example_6.3.X\uart.c	51;"	f	line:51	signature:(void)
+Read	C:\Users\tbi\Dropbox\Sunil Kumar_shared\CODE_Examples_C18_XC8_compatable\Z_TEST_CODES\Example_6.3.X\uart.h	64;"	p	line:64	signature:(void)
+Read_char	C:\Users\tbi\Dropbox\Sunil Kumar_shared\CODE_Examples_C18_XC8_compatable\Z_TEST_CODES\Example_6.3.X\uart.c	41;"	f	line:41	signature:(void)
+Read_char	C:\Users\tbi\Dropbox\Sunil Kumar_shared\CODE_Examples_C18_XC8_compatable\Z_TEST_CODES\Example_6.3.X\uart.h	55;"	p	line:55	signature:(void)
+Read_string	C:\Users\tbi\Dropbox\Sunil Kumar_shared\CODE_Examples_C18_XC8_compatable\Z_TEST_CODES\Example_6.3.X\uart.c	57;"	f	line:57	signature:(unsigned char *buffer, unsigned char len)
+Read_string	C:\Users\tbi\Dropbox\Sunil Kumar_shared\CODE_Examples_C18_XC8_compatable\Z_TEST_CODES\Example_6.3.X\uart.h	74;"	p	line:74	signature:(unsigned char *str, unsigned char n)
+TMR0_isr	C:\Users\tbi\Dropbox\Sunil Kumar_shared\CODE_Examples_C18_XC8_compatable\Z_TEST_CODES\Example_6.3.X\main.c	101;"	p	line:101	file:	signature:(void)
+TMR0_isr	C:\Users\tbi\Dropbox\Sunil Kumar_shared\CODE_Examples_C18_XC8_compatable\Z_TEST_CODES\Example_6.3.X\main.c	103;"	f	line:103	signature:(void)
+Timer0_isr	C:\Users\tbi\Dropbox\Sunil Kumar_shared\CODE_Examples_C18_XC8_compatable\Z_TEST_CODES\Example_6.3.X\main.c	126;"	f	line:126
+UART_H	C:\Users\tbi\Dropbox\Sunil Kumar_shared\CODE_Examples_C18_XC8_compatable\Z_TEST_CODES\Example_6.3.X\uart.h	12;"	d	line:12
+USE_AND_MASKS	C:\Users\tbi\Dropbox\Sunil Kumar_shared\CODE_Examples_C18_XC8_compatable\Z_TEST_CODES\Example_6.3.X\main.c	71;"	d	line:71	file:
+UsartConfig	C:\Users\tbi\Dropbox\Sunil Kumar_shared\CODE_Examples_C18_XC8_compatable\Z_TEST_CODES\Example_6.3.X\uart.c	19;"	f	line:19	signature:(unsigned char config1, unsigned char config2)
+UsartConfig	C:\Users\tbi\Dropbox\Sunil Kumar_shared\CODE_Examples_C18_XC8_compatable\Z_TEST_CODES\Example_6.3.X\uart.h	22;"	p	line:22	signature:(unsigned char config1, unsigned char config2)
+Write	C:\Users\tbi\Dropbox\Sunil Kumar_shared\CODE_Examples_C18_XC8_compatable\Z_TEST_CODES\Example_6.3.X\uart.c	24;"	f	line:24	signature:(char data)
+Write	C:\Users\tbi\Dropbox\Sunil Kumar_shared\CODE_Examples_C18_XC8_compatable\Z_TEST_CODES\Example_6.3.X\uart.h	33;"	p	line:33	signature:(char data)
+Write_str	C:\Users\tbi\Dropbox\Sunil Kumar_shared\CODE_Examples_C18_XC8_compatable\Z_TEST_CODES\Example_6.3.X\uart.c	30;"	f	line:30	signature:(unsigned char *c)
+Write_str	C:\Users\tbi\Dropbox\Sunil Kumar_shared\CODE_Examples_C18_XC8_compatable\Z_TEST_CODES\Example_6.3.X\uart.h	44;"	p	line:44	signature:(unsigned char *c)
+_XTAL_FREQ::20000000	C:\Users\tbi\Dropbox\Sunil Kumar_shared\CODE_Examples_C18_XC8_compatable\Z_TEST_CODES\Example_6.3.X\main.c	72;"	d	line:72	file:
+baud::9600	C:\Users\tbi\Dropbox\Sunil Kumar_shared\CODE_Examples_C18_XC8_compatable\Z_TEST_CODES\Example_6.3.X\main.c	73;"	d	line:73	file:
+c	C:\Users\tbi\Dropbox\Sunil Kumar_shared\CODE_Examples_C18_XC8_compatable\Z_TEST_CODES\Example_6.3.X\uart.c	43;"	l	line:43
+config_1	C:\Users\tbi\Dropbox\Sunil Kumar_shared\CODE_Examples_C18_XC8_compatable\Z_TEST_CODES\Example_6.3.X\main.c	76;"	v	line:76
+config_2::((_XTAL_FREQ/baud/64)-1)	C:\Users\tbi\Dropbox\Sunil Kumar_shared\CODE_Examples_C18_XC8_compatable\Z_TEST_CODES\Example_6.3.X\main.c	74;"	d	line:74	file:
+config_3	C:\Users\tbi\Dropbox\Sunil Kumar_shared\CODE_Examples_C18_XC8_compatable\Z_TEST_CODES\Example_6.3.X\main.c	142;"	l	line:142
+data	C:\Users\tbi\Dropbox\Sunil Kumar_shared\CODE_Examples_C18_XC8_compatable\Z_TEST_CODES\Example_6.3.X\uart.c	60;"	l	line:60
+delay_ms	C:\Users\tbi\Dropbox\Sunil Kumar_shared\CODE_Examples_C18_XC8_compatable\Z_TEST_CODES\Example_6.3.X\delay.c	18;"	f	line:18	signature:(unsigned char t)
+delay_ms	C:\Users\tbi\Dropbox\Sunil Kumar_shared\CODE_Examples_C18_XC8_compatable\Z_TEST_CODES\Example_6.3.X\delay.h	16;"	p	line:16	signature:(unsigned char t)
+delay_us	C:\Users\tbi\Dropbox\Sunil Kumar_shared\CODE_Examples_C18_XC8_compatable\Z_TEST_CODES\Example_6.3.X\delay.c	28;"	f	line:28	signature:(unsigned char t)
+delay_us	C:\Users\tbi\Dropbox\Sunil Kumar_shared\CODE_Examples_C18_XC8_compatable\Z_TEST_CODES\Example_6.3.X\delay.h	27;"	p	line:27	signature:(unsigned char t)
+ei	C:\Users\tbi\Dropbox\Sunil Kumar_shared\CODE_Examples_C18_XC8_compatable\Z_TEST_CODES\Example_6.3.X\main.c	118;"	f	line:118	signature:(void)
+function	C:\Users\tbi\Dropbox\Sunil Kumar_shared\CODE_Examples_C18_XC8_compatable\Z_TEST_CODES\Example_6.3.X\main.c	89;"	f	line:89	signature:(void)
+i	C:\Users\tbi\Dropbox\Sunil Kumar_shared\CODE_Examples_C18_XC8_compatable\Z_TEST_CODES\Example_6.3.X\delay.c	20;"	l	line:20
+i	C:\Users\tbi\Dropbox\Sunil Kumar_shared\CODE_Examples_C18_XC8_compatable\Z_TEST_CODES\Example_6.3.X\delay.c	30;"	l	line:30
+i	C:\Users\tbi\Dropbox\Sunil Kumar_shared\CODE_Examples_C18_XC8_compatable\Z_TEST_CODES\Example_6.3.X\delay.c	39;"	l	line:39
+i	C:\Users\tbi\Dropbox\Sunil Kumar_shared\CODE_Examples_C18_XC8_compatable\Z_TEST_CODES\Example_6.3.X\delay.c	47;"	l	line:47
+i	C:\Users\tbi\Dropbox\Sunil Kumar_shared\CODE_Examples_C18_XC8_compatable\Z_TEST_CODES\Example_6.3.X\uart.c	59;"	l	line:59
+j	C:\Users\tbi\Dropbox\Sunil Kumar_shared\CODE_Examples_C18_XC8_compatable\Z_TEST_CODES\Example_6.3.X\delay.c	39;"	l	line:39
+j	C:\Users\tbi\Dropbox\Sunil Kumar_shared\CODE_Examples_C18_XC8_compatable\Z_TEST_CODES\Example_6.3.X\delay.c	47;"	l	line:47
+load	C:\Users\tbi\Dropbox\Sunil Kumar_shared\CODE_Examples_C18_XC8_compatable\Z_TEST_CODES\Example_6.3.X\main.c	75;"	v	line:75
+low_vector	C:\Users\tbi\Dropbox\Sunil Kumar_shared\CODE_Examples_C18_XC8_compatable\Z_TEST_CODES\Example_6.3.X\main.c	110;"	f	line:110	signature:(void)
+main	C:\Users\tbi\Dropbox\Sunil Kumar_shared\CODE_Examples_C18_XC8_compatable\Z_TEST_CODES\Example_6.3.X\main.c	140;"	f	line:140	signature:(void)
+putch	C:\Users\tbi\Dropbox\Sunil Kumar_shared\CODE_Examples_C18_XC8_compatable\Z_TEST_CODES\Example_6.3.X\main.c	134;"	f	line:134	signature:(unsigned char byte)
+putch	C:\Users\tbi\Dropbox\Sunil Kumar_shared\CODE_Examples_C18_XC8_compatable\Z_TEST_CODES\Example_6.3.X\main.c	79;"	p	line:79	file:	signature:(unsigned char byte)
+str	C:\Users\tbi\Dropbox\Sunil Kumar_shared\CODE_Examples_C18_XC8_compatable\Z_TEST_CODES\Example_6.3.X\main.c	76;"	v	line:76

@@ -1,0 +1,53 @@
+
+# 1 "delay.c"
+
+# 13 "C:\Program Files (x86)\Microchip\xc8\v1.32\include\plib\delays.h"
+void Delay1TCYx(unsigned char);
+
+# 19
+void Delay10TCYx(unsigned char);
+
+# 25
+void Delay100TCYx(unsigned char);
+
+# 31
+void Delay1KTCYx(unsigned char);
+
+# 37
+void Delay10KTCYx(unsigned char);
+
+# 18 "delay.c"
+void delay_ms(unsigned char t)
+{
+unsigned char i;
+for (i=0;i<=t;i++)
+Delay1KTCYx(5);
+
+
+
+return;
+}
+void delay_us(unsigned char t)
+{
+unsigned char i;
+for (i=0;i<=t;i++)
+Delay1KTCYx(1);
+
+
+return;
+}
+void Delay_s(unsigned char t)
+{
+unsigned char i,j;
+for(i=0;i<t;i++)
+for(j=0;j<10;j++)
+delay_ms(100);
+}
+
+void Delay_ms_(unsigned char t)
+{
+unsigned char i,j;
+for(i=0;i<t;i++)
+for(j=0;j<5;j++)
+delay_ms(100);
+}
